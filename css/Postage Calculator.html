@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Postage Calculator</title>
+    <script>
+      function calcCost(){
+          console.log("invoked calcCost()")
+
+          document.getElementById('displayName').innerHTML = document.getElementById("yourName").value;
+
+          var expressCost = 0;
+
+          if (document.getElementById("expressDelivery").checked){
+              expressCost = 5;
+          }
+
+          if (document.getElementById("r1").checked){
+              alert("r1 is checked");
+              document.getElementById('displayCost').innerHTML = "\u00A3" + (2 * document.getElementById('weight').value + expressCost);
+          }
+          else if (document.getElementById("r2").checked){
+              alert("r2 is checked");
+              document.getElementById('displayCost').innerHTML = "\u00A3" + (10 * document.getElementById('weight').value + expressCost);
+          }
+          else {
+              alert("r3 is checked");
+              document.getElementById('displayCost').innerHTML = "\u00A3" + (5 * document.getElementById('weight').value + expressCost);
+          }
+      }
+    </script>
+</head>
+
+<h1>Postage Calculator</h1>
+
+<body>
+
+<form>
+  <label>Enter your name <input type="text" name="yourName" id="yourName"></label><br><br>
+  <label>Weight <input type="text" name="yourWeight" id="weight"></label><br><br>
+  <label>Do you want express delivery? Additional 5 <input type="checkbox" name="expressDelivery" id="expressDelivery"></label><br>
+  Rate<br>
+  <input type="radio" id="r1" name="rate" value="United Kingdom" checked="checked"> United Kingdom - 2 per kilo <br>
+  <input type="radio" id="r2" name="rate" value="United States" checked="checked"> United States - 10 per kilo <br>
+  <input type="radio" id="r3" name="rate" value="Europe" checked="checked"> Europe - 5 per kilo <br><br>
+  <label><b>Proof of Postage </b></label>
+  <select id="Proof of Postage" >
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select><br><br>
+</form>
+
+<button onclick="calcCost()">Submit </button>
+
+<p>Postage Cost is
+<div id='displayName'></div>
+</p>
+
+<div id       ="displayCost"></div>
+
+</body>
+</html>
